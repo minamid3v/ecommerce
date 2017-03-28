@@ -1,0 +1,7 @@
+<% if @product.destroyed? %>
+  $('#flash').html('<div class="alert alert-success"><%= flash[:success] %></div>')
+  $('.products').html('<%= j render partial: "list_product", locals: {products: @products} %>')
+<% else %>
+  $('#flash').html('<div class="alert alert-danger"><%= flash[:danger] %></div>')
+  $('.products').html('<%= j render partial: "list_product", locals: {products: @products} %>')
+<% end %>

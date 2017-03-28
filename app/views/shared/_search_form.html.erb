@@ -1,0 +1,42 @@
+<%= form_tag yield(:path), method: :get do %>
+  <div>
+    <%= t "search_form.name" %><%= text_field_tag "name", params[:name],
+      class: "form-control" %>
+  </div>
+  <div><%= t "search_form.category" %><%= select_tag "sub_category",
+    grouped_options_for_select(group_category_select, params[:sub_category]),
+    class: "select form-control",
+    include_blank: "All" %>
+  </div>
+  <div><%= t "search_form.classification" %><%= select_tag "classification",
+    options_for_select(classification_select, params[:classification]),
+    class: "select form-control", include_blank: t("select.select_all") %>
+  </div>
+  <div><%= t "search_form.rating" %><%= select_tag "rate",
+    options_for_select(rate_select, params[:rate]), class: "select form-control",
+    include_blank: "All" %>
+  </div>
+  <div class="price-slider">
+    <label><%= t "search_form.price" %></label>
+    <label><%= number_to_currency Settings.search_form.min_price %></label>
+    <div class="slider-wrapper">
+      <%= text_field_tag "price", "", id: "price-slider", type: "text",
+        "data-slider-min": Settings.search_form.min_price,
+        "data-slider-max": Settings.search_form.max_price,
+        "data-slider-step": Settings.search_form.slider_step,
+        "data-slider-value": Settings.search_form.slider_value,
+        "data-slider-orientation": "vertical"%>
+    </div>
+    <label><%= number_to_currency Settings.search_form.max_price %></label>
+  </div>
+  <button type="submit" class="btn btn-primary full-width-button">
+    <%= t "search_form.search" %>
+  </button>
+  <% if yield(:path) == admin_products_path %>
+    <div class="upload-section">
+      <a class="text-danger" data-toggle="modal" data-target="#upload-modal">
+        <%= t "upload_csv" %>
+      </a>
+    </div>
+  <% end %>
+<% end %>

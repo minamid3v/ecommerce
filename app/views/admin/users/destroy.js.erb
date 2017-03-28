@@ -1,0 +1,7 @@
+<% if @user.destroyed? %>
+  $('#flash').html('<div class="alert alert-success"><%= flash[:success] %></div>')
+  $('tbody').html('<%= j render partial: "list_user", locals: {users: @users} %>')
+<% else %>
+  $('#flash').html('<div class="alert alert-danger"><%= flash[:danger] %></div>')
+  $('tbody').html('<%= j render partial: "list_user", locals: {users: @users} %>')
+<% end %>

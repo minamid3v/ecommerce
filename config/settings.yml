@@ -1,0 +1,72 @@
+validation:
+  content: 500
+  name: 255
+  description: 500
+  quantity: 0
+  address: 255
+  full_name: 255
+  phone: 15
+  point: 0
+  price: 0
+  email: 255
+  password: 6
+  user_name_max: 15
+  user_name_min: 3
+image:
+  profile_upload_size: "300x300"
+  product_upload_size: "300x300"
+login:
+  remember_me: "1"
+recently_viewed:
+  per_page: 5
+  size: 12
+max_rate: 5
+min_rate: 1
+paginate:
+  product_show: 12
+  admin_orders: 6
+  admin_suggested_products: 6
+  admin_users: 6
+  admin_products: 12
+  top_new_products: 16
+  user_orders: 6
+  hot_trend_products: 12
+  recently_viewed: 6
+  suggested_products: 6
+  order_detail: 6
+average_rate_round: 2
+search_form:
+  max_price: 10000000
+  min_price: 0
+  slider_step: 100000
+  slider_value: "[0, 2000000]"
+average_rate_round: 2
+order:
+  status_default: 1
+  quantity_default: 1
+  confirmed_status: 2
+  shipping_status: 3
+suggested:
+  price_max: 10000000
+  price_min: 0
+  price_step: 1000
+user_form:
+  size_thumbnail: "300x300"
+product_form:
+  min_price: 0
+  price_step: 1000
+  quantity_min: 0
+  quantity_step: 1
+mailer:
+  host: "localhost:3000"
+  production: "ecommerce-rails.herokuapp.com"
+chart_type:
+  number_of_product_day: 1
+  number_of_product_month: 2
+  number_of_product_year: 3
+  income_of_product_day: 4
+  income_of_product_month: 5
+  income_of_product_year: 6
+  income_daily: 7
+  income_monthy: 8
+  income_yearly: 9

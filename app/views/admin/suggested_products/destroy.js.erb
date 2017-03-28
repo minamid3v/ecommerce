@@ -1,0 +1,7 @@
+<% if @suggested_product.destroyed? %>
+  $('#flash').html('<div class="alert alert-success"><%= flash[:success] %></div>')
+  $('tbody').html('<%= j render @suggested_products %>')
+<% else %>
+  $('#flash').html('<div class="alert alert-danger"><%= flash[:danger] %></div>')
+  $('tbody').html('<%= j render @suggested_products %>')
+<% end %>

@@ -1,0 +1,23 @@
+<div class="row">
+  <h2><%= statistic_select[@select.to_i-1].first %></h2>
+</div>
+<div class="row">
+  <aside class="col-md-4">
+    <%= form_tag admin_statistics_path, method: :get do %>
+      <div class="form-group">
+        <label for="date"><%= t "statistic.choose_day" %></label>
+        <%= date_field_tag :date, Date.today, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <label for="date">Statistic</label>
+        <%= select_tag :statistic,
+          options_for_select(statistic_select, params[:statistic]), include_blank: nil,
+          class: "select form-control" %>
+      </div>
+      <%= submit_tag t("statistic.get_statistic"), class: "btn btn-info" %>
+    <% end %>
+  </aside>
+  <div class="col-md-8">
+    <%= render_chart @select.to_i %>
+  </div>
+</div>

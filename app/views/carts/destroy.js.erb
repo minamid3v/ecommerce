@@ -1,0 +1,8 @@
+$('.badge').html('<%= current_cart.size %>')
+$('.total').html('<%= number_to_currency(current_cart.total) %>')
+$('tbody').html('<%=j render partial: "cart_table", locals: {products: @current_cart.products} %>')
+<% if !current_cart.products.any? %>
+  $('.order-summary').empty()
+  $('.ecommerce-table').empty()
+  $('.row').html('<p><%= t "cart.no_item" %></p>')
+<% end %>

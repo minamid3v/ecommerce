@@ -1,0 +1,20 @@
+<div class="col-md-8 col-md-offset-2">
+  <div class="user-table">
+    <table class="table ecommerce-table">
+      <thead>
+        <tr>
+          <th><%= t "table.user" %></th>
+          <th><%= t "table.user_name" %></th>
+          <th><%= t "table.email" %></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.each do |user| %>
+          <%= render partial: "user_table", locals: {user: user} %>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate users %>
+  </div>
+</div>

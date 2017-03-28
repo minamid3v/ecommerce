@@ -1,0 +1,6 @@
+$('.badge').html('<%= current_cart.size %>');
+$('tbody').html('<%=j render partial: "cart_table", locals: {products: current_cart.products} %>')
+$('.total').html('<%= number_to_currency(current_cart.total) %>')
+<% if flash.any? %>
+  alert('<%= flash[:danger] %>');
+<% end %>

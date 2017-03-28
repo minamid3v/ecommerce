@@ -1,0 +1,17 @@
+<div class="card col-sm-6 col-md-3">
+  <%= form_tag '/carts', remote: true do |f| %>
+    <%= link_to image_tag(product.image.url, alt: t("alt.product_image"),
+      class: "full-width-image"), product %>
+      <h4><b><%= product.name %></b></h4>
+      <div class="product-rate"
+        data-score="<%= product.average_rate %>">
+      </div>
+      <span>( <%= pluralize product.rate_count, "review" %> )</span>
+      <p class="product-price"><%= t "product.price" %>
+        <%= number_to_currency product.price %>
+      </p>
+      <%= hidden_field_tag :product_id, product.id %>
+      <%= hidden_field_tag :quantity, Settings.order.quantity_default %>
+      <%= submit_tag t("product.buy_now"), class: "btn full-width-button" %>
+  <% end %>
+</div>

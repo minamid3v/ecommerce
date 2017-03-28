@@ -1,0 +1,48 @@
+<div class="row">
+  <h1 class="text-center"><%= yield :title %></h1>
+</div>
+<div class="row">
+  <%= form_for [current_user, @suggested_product], html: { multipart: true } do |f| %>
+    <%= render "shared/error_messages", object: f.object%>
+    <div class="col-md-5 col-md-offset-2">
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :content %>
+        <%= f.text_area :content, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :price %>
+        <div class="input-group">
+          <span class="input-group-addon"><%= number_to_currency 1,
+            format: "%u" %></span>
+          <%= f.number_field :price, class: "form-control",
+            min: Settings.suggested.price_min, max: Settings.suggested.max_price,
+            step: Settings.suggested.price_step %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div class="form-group">
+        <%= f.label :image %>
+        <%= f.file_field :image, id: "image-upload" %>
+        <% if @suggested_product.image.present? %>
+          <%= image_tag @suggested_product.image.url,
+            alt: t("alt.suggested_product"), class: "img-responsive",
+            id: "current-profile-image"%>
+        <% end %>
+        <%= image_tag "#", {size: "300x300", alt: t("alt.suggested_product"),
+          class: "img-thumbnail hidden", id: "img_prev"} %>
+      </div>
+    </div>
+
+    <div class="col-md-5 col-md-offset-2">
+      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

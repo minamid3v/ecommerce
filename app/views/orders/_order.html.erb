@@ -1,0 +1,14 @@
+<tr class="product-in-cart">
+  <td class="w15">
+    <%= link_to "##{order.id}", user_order_path(current_user, order) %>
+  </td>
+  <td class="w45">
+    <p><%= pluralize order.order_details_count, "product" %></p>
+  </td>
+  <td class="w15">
+    <p><%= number_to_currency order.total %></p>
+  </td>
+  <td>
+    <p><%= order.order_status.name %></p>
+  </td>
+</tr>

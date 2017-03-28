@@ -1,0 +1,18 @@
+<tr class="product-in-cart">
+  <td class="w15">
+    <%= link_to image_tag(product.image.url, alt: t("alt.product_image"),
+      class: "img-responsive"), product %>
+  </td>
+  <td class="w45">
+    <b><%= product.name %></b>
+    <p><%= product.description %></p>
+  </td>
+  <td class="w15">
+    <p><%= number_to_currency product.price %></p>
+  </td>
+  <td class="w20 rating">
+    <%= content_tag :div, "", class: "recently-viewed-rating",
+      "data-score": product.average_rate %>
+    <p>( <%= pluralize product.rate_count, "review" %> )</p>
+  </td>
+</tr>

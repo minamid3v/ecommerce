@@ -1,0 +1,32 @@
+<% provide :product_link, product_url(@product) %>
+<% provide :site_name, @product.name %>
+<% provide :description, @product.description %>
+<% provide :image_url, "https://ecommerce23.herokuapp.com"<<@product.image.url %>
+<% provide :product_name, @product.name %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <%= image_tag @product.image.url, alt: "alt.product_image",
+        class: "img-responsive" %>
+    </div>
+    <div class="col-md-6">
+      <h2><%= @product.name %></h2>
+      <% if @rating.present? || !logged_in?%>
+        <div class="product-rate" data-score="<%= @product.average_rate %>">
+        </div>
+      <% else %>
+        <div class="row user-rate-product" product-id="<%= @product.id %>"
+          user-id="<%= current_user.id %>">
+        </div>
+      <% end %>
+      <i><%= pluralize @product.rate_count, "review" %></i>
+      <p class="description"><%= @product.description %></p>
+      <%= render "layouts/facebook_button_share" %>
+      <h3 class="price"><%= number_to_currency @product.price %></h3>
+      <a href="#" class="btn btn-primary btn-add-to-cart"
+        product="<%= @product.id %>"><%= t "product.add_to_cart" %></a>
+      <div class="fb-comments" data-href="<%= product_url @product %>"
+        data-numposts="5"></div>
+    </div>
+  </div>
+</div>

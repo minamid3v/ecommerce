@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h2><%= t "user_management.title" %></h2>
+    <%= form_tag admin_users_path, method: :get, id: "seach-user", class: "search-box" do %>
+        <input type="text" name="keyword" class="form-control search-query"
+          placeholder="<%= t "user_management.placeholder" %>" />
+        <button class="btn btn-danger" form="seach-user" type="submit">
+          <%= t "button.search" %>
+        </button>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <% if @users.any? %>
+    <%= render partial: "list_user", locals: {users: @users} %>
+  <% else %>
+  <div class="col-md-8 col-md-offset-2">
+    <div class="alert alert-danger no-user-info">
+      <p class="text-center"><%= t "info.no_user" %></p>
+    </div>
+  </div>
+  <% end %>
+</div>

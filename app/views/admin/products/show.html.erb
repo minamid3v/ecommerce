@@ -1,0 +1,29 @@
+<% provide :og_url, "http://www.notes.minamidev.com" %>
+<% provide :og_type, "article" %>
+<% provide :og_title, @product.name %>
+<% provide :og_description, @product.description %>
+<% provide :og_image, "http://www.levihackwith.com/wp-content/uploads/2013/03/ruby.png" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <%= image_tag @product.image.url, alt: t("alt.product_image"),
+        class: "img-responsive" %>
+    </div>
+    <div class="col-md-6">
+      <h2><%= @product.name %>
+      </h2>
+      <div class="row admin-rate-product" product-id="<%= @product.id %>"
+        data-score="<%= @product.average_rate %>">
+      </div>
+      <i><%= pluralize @product.rate_count, "review" %></i>
+      <p class="description"><%= @product.description %></p>
+      <%= render "layouts/facebook_share" %>
+      <h3 class="price"><%= number_to_currency @product.price %></h3>
+      <%= link_to t("button.edit"), edit_admin_product_path(@product),
+        class: "btn btn-default" %>
+      <%= link_to t("button.delete"), admin_product_path(@product),
+        method: :delete, data: { confirm: t("confirm.are_you_sure") },
+        class: "btn btn-danger" %>
+    </div>
+  </div>
+</div>

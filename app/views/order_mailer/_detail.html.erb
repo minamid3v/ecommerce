@@ -1,0 +1,15 @@
+<tr class="product-in-cart">
+  <td>
+    <%= image_tag order_detail.product.image.url,
+      alt: t("alt.product_image"), class: "img-responsive", size: "200x160" %>
+  </td>
+  <td width="150px">
+    <p style="text-align:center"><%= order_detail.product.name %></p>
+  </td>
+  <td width="150px">
+    <p style="text-align: center"><%= number_to_currency order_detail.price %></p>
+  </td>
+  <td width="50px">
+    <p><%= pluralize order_detail.quantity, "item" %></p>
+  </td>
+</tr>

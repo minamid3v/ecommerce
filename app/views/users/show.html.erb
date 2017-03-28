@@ -1,0 +1,82 @@
+<%= provide :title, @user.user_name %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= image_tag @user.profile_image.url, {:size => "300x300"} %>
+        <%= @user.user_name %>
+      </h1>
+      <p  class="text-center text-info"><%= @user.email %></p>
+      <%= link_to "edit profile", edit_user_path, class: "btn btn-success full-width-button" %>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#home_tab" role="tab"><%= t "user_profile.recently_viewed" %></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#suggested_product_tab" role="tab">
+          <%= t "user_profile.suggested_products" %>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#orders_tab" role="tab">
+          <%= t "user_profile.orders" %>
+        </a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="home_tab" role="tabpanel">
+        <table class="table recenty-viewed">
+          <thead>
+            <tr>
+              <th><%= t "recently.product" %></th>
+              <th><%= t "recently.description" %></th>
+              <th><%= t "recently.price" %></th>
+              <th><%= t "recently.rating" %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @recently_viewed_products.each do |product| %>
+              <%= render partial: "recently_viewed", locals: {product: product} %>
+            <% end %>
+          </tbody>
+        </table>
+        <%= will_paginate @recently_viewed_products %>
+      </div>
+      <div class="tab-pane" id="suggested_product_tab" role="tabpanel">
+        <table class="table recenty-viewed">
+          <thead>
+            <tr>
+              <th><%= t "recently.product" %></th>
+              <th><%= t "recently.description" %></th>
+              <th><%= t "recently.price" %></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @suggested_products %>
+          </tbody>
+        </table>
+        <%= will_paginate @suggested_products, param_name: :suggest_page %>
+      </div>
+      <div class="tab-pane" id="orders_tab" role="tabpanel">
+        <table class="table recenty-viewed">
+          <thead>
+            <tr>
+              <th></th>
+              <th><%= t "orders.product" %></th>
+              <th><%= t "orders.total" %></th>
+              <th><%= t "orders.status" %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @orders %>
+          </tbody>
+        </table>
+        <%= will_paginate @orders, param_name: :order_page %>
+      </div>
+    </div>
+  </div>
+</div>

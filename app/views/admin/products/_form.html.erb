@@ -1,0 +1,62 @@
+<div class="row">
+  <h1 class="text-center"><%= yield :title %></h1>
+</div>
+<div class="row">
+  <%= form_for [:admin, @product], html: { multipart: true } do |f| %>
+    <%= render "shared/error_messages", object: f.object%>
+    <div class="col-md-5 col-md-offset-2">
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+
+      <div>
+        <%= t "search.category" %><%= f.select :sub_category_id,
+          grouped_options_for_select(group_category_select),
+          {include_blank: nil}, {class: "select form-control"} %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :price %>
+        <div class="input-group">
+          <span class="input-group-addon"><%= number_to_currency 1,
+            format: "%u" %></span>
+          <%= f.number_field :price, class: "form-control",
+            min: Settings.product_form.min_price,
+            step: Settings.product_form.price_step %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :quantity %>
+        <div class="input-group">
+          <%= f.number_field :quantity, class: "form-control",
+            min: Settings.product_form.quantity_min,
+            step: Settings.product_form.quantity_step %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <%= f.label :image %>
+        <%= f.file_field :image, id: "image-upload" %>
+        <% if @product.image.present? %>
+          <%= image_tag @product.image.url, alt: "logo",
+            class: "img-responsive",
+            id: "current-profile-image"%>
+        <% end %>
+        <%= image_tag "#", {size: Settings.image.product_upload_size,
+          alt: "suggested product image",
+          class: "img-thumbnail hidden", id: "img_prev"} %>
+      </div>
+    </div>
+    <div class="col-md-5 col-md-offset-2">
+      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

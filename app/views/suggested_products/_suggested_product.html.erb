@@ -1,0 +1,22 @@
+<tr class="product-in-cart">
+  <td class="w20">
+    <%= link_to image_tag(suggested_product.image.url,
+      alt: t("alt.product_image"), class: "img-responsive"),
+      user_suggested_product_path(current_user) %>
+  </td>
+  <td class="w60">
+    <b><%= suggested_product.name %></b>
+    <p><%= suggested_product.content %></p>
+  </td>
+  <td class="w25">
+    <p><%= number_to_currency suggested_product.price %></p>
+  </td>
+  <td>
+    <%= link_to content_tag(:i, "", class: "fa fa-pencil-square-o"),
+      edit_user_suggested_product_path(current_user, suggested_product) %>
+    <%= link_to content_tag(:i, "", class: "fa fa-times text-danger"),
+        user_suggested_product_path(current_user, suggested_product),
+        method: :delete, data: { confirm: t("confirm.are_you_sure") },
+        remote: true %>
+  </td>
+</tr>

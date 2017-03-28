@@ -1,0 +1,56 @@
+<h2>My shopping cart</h2>
+<div class="row">
+  <% if current_cart.products.any? %>
+    <div class="col-md-8">
+      <table class="table ecommerce-table">
+        <thead>
+          <tr>
+            <th>
+              <h4><%= pluralize current_cart.product_count, "product" %></h4>
+            </th>
+            <th></th>
+            <th><%= t "cart.item_price" %></th>
+            <th><%= t "cart.quantity" %></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "cart_table",
+            locals: {products: current_cart.products}%>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4 order-summary">
+      <h4><%= t "cart.order_summary" %></h4>
+      <hr>
+      <p><%= t "cart.total" %> <span><%= t "cart.total_payment_amount" %></span>
+        <span class="pull-right total">
+          <%= number_to_currency current_cart.total %>
+        </span>
+      </p>
+
+      <div class="row">
+        <%= form_for @order do |f| %>
+          <%= render "shared/error_messages", object: f.object %>
+          <div class="form-group">
+            <%= f.label :address %>
+            <%= f.text_field :address, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :full_name %>
+            <%= f.text_field :full_name, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :phone %>
+            <%= f.text_field :phone, class: "form-control" %>
+          </div>
+          <%= f.submit t("cart.proceed_to_checkout"),
+            class: "btn btn-primary btn-checkout" %>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <p><%= t "cart.no_item" %></p>
+  <% end %>
+</div>

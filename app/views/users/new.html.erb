@@ -1,0 +1,9 @@
+<%= provide :title, t("signup.title") %>
+<%= provide :button_text, t("signup.create_my_account") %>
+<%= provide :password_confirmation, t("signup.password_confirmation") %>
+<h1><%= t "signup.title" %></h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= render "form" %>
+  </div>
+</div>

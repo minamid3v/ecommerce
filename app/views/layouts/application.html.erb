@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render "layouts/meta_tag" %>
+    <title>Ecommerce Home</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
+    <%= render "layouts/shim" %>
+  </head>
+
+  <body>
+    <div id="fakeLoader"></div>
+    <div id="fb-root"></div>
+    <%= render "layouts/header" %>
+    <div class="container render-page">
+      <div id="flash">
+        <% flash.each do |message_type, messages| %>
+          <% if messages.is_a? Array %>
+            <% messages.each do |message| %>
+              <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+            <% end %>
+          <% else %>
+            <%= content_tag(:div, messages, class: "alert alert-#{message_type}") %>
+          <% end %>
+        <% end %>
+      </div>
+      <%= yield %>
+      <%= render "layouts/footer" %>
+    </div>
+    <% if logged_in?%>
+      <%= javascript_include_tag "subiz_chat", "data-turbolinks-track": "reload" %>
+    <% end %>
+  </body>
+</html>

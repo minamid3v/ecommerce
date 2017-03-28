@@ -1,0 +1,6 @@
+<% if products.any? %>
+  <%= render products %>
+  <%= will_paginate %>
+<% else %>
+  <p class="text-info"><%= t "info.no_product" %></p>
+<% end %>

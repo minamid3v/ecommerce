@@ -1,0 +1,57 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to t("header_page.app_name"), root_path, id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to t("header_page.products"), products_path %></li>
+        <% if logged_in? %>
+          <li>
+            <%= link_to carts_path, class: "header-cart" do %>
+              <%= t("header_page.cart") %></i><%= content_tag :span,
+                current_cart.size, class: "badge" %>
+            <% end %>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= current_user.user_name %> <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to t("header_page.profile"),
+                user_path(current_user) %></li>
+              <li><%= link_to t("header_page.settings"),
+                edit_user_path(current_user) %></li>
+              <li><%= link_to t("header_page.suggest_product"),
+                new_user_suggested_product_path(current_user) %></li>
+              <li class="divider"></li>
+              <li><%= link_to t("header_page.logout"), logout_path,
+                method: :delete %></li>
+            </ul>
+          </li>
+          <% if current_user.is_admin? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= t "header_page.dashboard" %> <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to t("header_page.user_management"),
+                admin_users_path %></li>
+              <li><%= link_to t("header_page.product_management"),
+                admin_products_path %></li>
+              <li><%= link_to t("header_page.order_management"),
+                admin_orders_path %></li>
+              <li><%= link_to t("header_page.suggest_management"),
+                admin_suggested_products_path %></li>
+              <li><%= link_to t("header_page.categories"),
+                admin_categories_path %></li>
+              <li><%= link_to t("header_page.statistic"),
+                admin_statistics_path %></li>
+            </ul>
+          </li>
+          <% end %>
+        <% else %>
+          <li><%= link_to t("header_page.login"), login_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,42 @@
+<div class="row">
+  <aside class="col-md-3 categories-list">
+    <div id="main-menu">
+      <div class="list-group panel">
+        <% @categories.each do |category| %>
+          <%= content_tag :div, "",
+            class: "list-group-item list-group-item-default" do %>
+            <%= category.name %>
+            <% if category.sub_categories.any? %>
+              <%= link_to "", "#category_#{category.id}", class: "fa fa-caret-down",
+                "data-parent": "#main-menu", "data-toggle": "collapse" %>
+            <% end %>
+            <%= link_to content_tag(:i, "", class: "fa fa-times pull-right"),
+              admin_category_path(category), method: :delete,
+              class: "text-danger" %>
+            <%= link_to "", admin_category_path(category),
+              class: "fa fa-edit pull-right", remote: true %>
+          <% end %>
+          <%= content_tag :div, "", class: "collapse",id: "category_#{category.id.to_s}" do %>
+            <% category.sub_categories.each do |sub_category| %>
+              <%= content_tag :div , class: "list-group-item list-group-item-warning" do %>
+                <%= sub_category.name %>
+                <%= link_to content_tag(:i, "", class: "fa fa-times pull-right"),
+                  admin_sub_category_path(sub_category), method: :delete, class: "text-danger" %>
+                <%= link_to "", admin_sub_category_path(sub_category),
+                  class: "fa fa-edit pull-right", remote: true %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </aside>
+  <div class="col-md-5 col-md-offset-1">
+    <h2 id="title"></h2>
+    <div id="category_edit">
+    </div>
+
+    <div id="sub_category_edit">
+    </div>
+  </div>
+</div>

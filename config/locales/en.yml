@@ -1,0 +1,186 @@
+en:
+  hello: "Hello world"
+  project_name: "Ecommerce 23"
+
+  header_page:
+    products: "Products"
+    login: "Login"
+    home: "Home"
+    logout: "Log out"
+    settings: "Settings"
+    profile: "Profile"
+    app_name: "Ecommerce23"
+    account: "Account"
+    cart: "Cart"
+    dashboard: "Dashboard"
+    user_management: "User management"
+    product_management: "Product management"
+    order_management: "Order management"
+    suggest_management: "Suggest management"
+    statistic: "Statistic"
+    suggest_product: "Suggest product"
+    categories: "Categories management"
+  footer:
+    help: "Help"
+    about: "About"
+  login:
+    login: "Login"
+    remember_me: "Remember me"
+    forgot_password: "(forgot password)"
+    new_user: "New user?"
+    title: "Login"
+    signup: "Sign up now"
+    invalid_email_password: "Invalid email or password, try again."
+  home:
+    title: "Home"
+    new_products: "New products"
+    hot_trends: "Hot trend products"
+  signup:
+    title: "Sign up"
+    password_confirmation: "Confirmation"
+    create_my_account: "Create my account"
+  user_edit:
+    title: "Edit profile"
+    password_confirmation: "Password Confirmation"
+    save_changes: "Save changes"
+    profile_image: "Profile image"
+  alt:
+    profile_image: "profile image"
+    product_image: "product image"
+    suggested_product: "suggested product"
+  recently:
+    product: "Product"
+    description: "Description"
+    price: "Price"
+    rating: "Rating"
+    title: "Recently viewed products"
+  show:
+    edit_profile: "Edit Profile"
+  show_product:
+    add_to_cart: "Add to cart"
+    reviews: "reviews"
+    price: "Price"
+    buy_now: "buy now"
+  error:
+    product_not_found: "Product is not found."
+    update_failed: "Update failed."
+    order_not_found: "Order not found."
+    delete_failed: "Delete failed."
+    upload: "Upload failed."
+    suggested_product_not_found: "Suggested product not found."
+    please_log_in: "Please log in."
+    product_out_of_stock: "Product is out of stock now."
+    invalid_order: "Invalid order confirmation link"
+    rate_failed: "Rating failed. Sorry about that!"
+    user_not_found: "User not found."
+    permission_denied: "Permission denied."
+    category_not_found: "Category not found."
+    sub_category_not_found: "Sub category not found."
+    user_not_found: "User not found"
+    fill_required: ""
+  search_form:
+    search: "Search"
+    all: "All"
+    price: "Price"
+    category: "Category"
+    rating: "Rating"
+    name: "Name"
+    classification: "Classification"
+  index_product:
+    not_found: "There is no product matches your search."
+  statistic:
+    top_day_income_product: "Top day income products"
+    top_month_income_product: "Top month income products"
+    top_year_income_product: "Top year income products"
+    year_income: "Year income"
+    month_income: "Month income"
+    day_income: "Day income"
+    get_statistic: "Get Statistic"
+    choose_day: "Choose a day"
+  success:
+    shipped: "Successfully shipped."
+    update: "Successfully updated."
+    upload: "Successfully imported."
+    delete: "Successfully deleted."
+    order_success: "Order confirmation email has sent. Please check email to confirm your order!"
+    order_shipping: "Your order is shipping to you."
+    signup: "Welcome to Ecommerce 23"
+    rate_success: "Thanks for your rating."
+    suggest: "Thanks for your suggesting"
+    order_approve: "Your order must be approved by us, before is shipped."
+  info:
+    no_product: "There is no product matches your search."
+    no_order: "There is no order there."
+    no_user: "There is no user there."
+  confirm:
+    are_you_sure: "Are you sure?"
+  suggested_products_edit:
+    title: "Edit"
+    button: "Save changes"
+  suggested_product_new:
+    title: "New suggest product"
+    button: "Suggest"
+  user_profile:
+    recently_viewed: "Recently viewed products"
+    suggested_products: "Suggested products"
+    orders: "Orders"
+  orders:
+    total: "Total "
+    product: "Product"
+    status: "Status"
+    summary: "Order summary"
+    total_payment_amount: "(Total payment amount)"
+    resend_confirm_email: "Resend confirmation email"
+    title: "Order #"
+    ship: "Ship"
+    reject: "Reject"
+  facebook_share: "Share"
+  product:
+    add_to_cart: "Add to cart"
+    price: "PRICE: "
+    buy_now: "BUY NOW"
+  table:
+    item_price: "ITEM PRICE"
+    quantity: "QUANTITY"
+    products: "Products"
+    total: "Total"
+    status: "Status"
+    user: "User"
+    user_name: "User name"
+    email: "Email"
+  cart:
+    proceed_to_checkout: "Proceed to checkout"
+    item_price: "Price"
+    quantity: "Quantity"
+    order_summary: "Order summary"
+    total: "Total"
+    total_payment_amount: "(Total payment amout)"
+  select:
+    select_all: "All"
+  button:
+    search: "Search"
+    delete: "Delete"
+    edit: "Edit"
+    save_changes: "Save changes"
+  order_management:
+    title: "Orders Management"
+  user_management:
+    title: "Users Management"
+    placeholder: "Search user by user name, email"
+  upload_csv: "Upload more product form csv file"
+  upload:
+    title: "Upload CSV file"
+    close: "Close"
+    cancel: "Cancel"
+    import: "Import"
+  edit_product:
+    title: "Edit product"
+  suggested_product_management:
+    title: "Suggested products management"
+  mailer:
+    confirm: "Confirm"
+    greeting: "Dear "
+  category_edit:
+    title: "Category edit"
+  sub_category_edit:
+    title: "Sub category edit"

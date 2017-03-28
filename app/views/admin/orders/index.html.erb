@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h2><%= t("order_management.title") %></h2>
+    <%= form_tag admin_orders_path, method: :get, id: "seach-order", class: "search-box" do %>
+      <%= select_tag "status_id",
+        options_for_select(order_status_select, params[:status_id]),class: "select form-control status-id-select",
+        include_blank: t("select.select_all")%>
+      <button class="btn btn-danger" form="seach-order" type="submit"><%= t("button.search") %></button>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <% if @orders.any? %>
+    <div class="col-md-8 col-md-offset-2">
+      <div class="user-table">
+        <table class="table ecommerce-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th><%= t "table.products" %></th>
+              <th><%= t "table.total" %></th>
+              <th><%= t "table.status" %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @orders %>
+          </tbody>
+        </table>
+        <%= will_paginate @orders %>
+      </div>
+    </div>
+  <% else %>
+  <div class="col-md-8 col-md-offset-2">
+    <div class="alert alert-danger no-user-info">
+      <p class="text-center"><%= t "info.no_order" %></p>
+    </div>
+  </div>
+  <% end %>
+</div>

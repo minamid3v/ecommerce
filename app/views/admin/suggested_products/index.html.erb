@@ -1,0 +1,29 @@
+<% provide :path, admin_suggested_products_path %>
+<div class="row">
+  <h2 class="text-center"><%= t "suggested_product_management.title" %></h2>
+</div>
+<div class = "row product-list">
+  <hr>
+  <aside class="col-md-2">
+    <%= render "shared/search_form" %>
+  </aside>
+  <div class="col-md-10">
+    <% if @suggested_products.any? %>
+      <table class="table recenty-viewed">
+        <thead>
+          <tr>
+            <th><%= t "recently.product" %></th>
+            <th><%= t "recently.description" %></th>
+            <th><%= t "recently.price" %></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @suggested_products %>
+        </tbody>
+      </table>
+    <% else %>
+      <p class="text-info"><%= t "info.no_product" %></p>
+    <% end %>
+  </div>
+</div>

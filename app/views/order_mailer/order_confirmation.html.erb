@@ -1,0 +1,43 @@
+<style media="screen">
+  td {
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+  }
+</style>
+<%= t "mailer.greeting" %><%= @user.user_name %>,
+<hr>
+<h4><%= t "orders.title" %><%= @order.id %></h4>
+<table class="table ecommerce-table">
+  <thead>
+    <tr>
+      <th>
+        <h4><%= pluralize @order.order_details_count, "product" %></h4>
+      </th>
+      <th></th>
+      <th><%= t "table.item_price" %></th>
+      <th><%= t "table.quantity" %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_details.each do |order_detail| %>
+      <%= render partial: "detail",
+        locals: {order_detail: order_detail} %>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="order-summary">
+  <h4><%= t "orders.summary" %></h4>
+  <hr>
+  <p><%= t "orders.total" %>
+    <span>
+      <%= t "orders.total_payment_amount" %>
+    </span>
+    <span class="total">
+      <%= number_to_currency @order.total %>
+    </span>
+  </p>
+</div>
+<hr>
+<%= link_to t("mailer.confirm"), edit_order_confirmation_url(@order.confirmation_token, email: @user.email, order_id: @order.id) %>
